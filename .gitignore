@@ -1,0 +1,13 @@
+# PALM output files
+*.nc
+*.out
+*.err
+*.vtk
+*.npy
+
+# PALM temporary directories
+tmp/
+
+# Large binary files
+*.tar.gz
+*.AppImage
