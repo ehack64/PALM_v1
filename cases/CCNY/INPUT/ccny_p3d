@@ -1,0 +1,69 @@
+!-------------------------------------------------------------------------------
+!-- INITIALIZATION PARAMETER NAMELIST
+!-------------------------------------------------------------------------------
+ &initialization_parameters
+    nx                   = 199,
+    ny                   = 199,
+    nz                   = 100,
+    dx                   = 5.0,
+    dy                   = 5.0,
+    dz                   = 5.0,
+    fft_method           = 'fftw',
+    humidity             = .T.,
+    q_surface            = 0.01,
+    initializing_actions = 'set_constant_profiles',
+    pt_surface           = 300.15,
+    ug_surface           = 3.0,
+    vg_surface           = 0.0,
+    origin_date_time     = '2025-07-01 06:00:00 +00',
+    topography           = 'read_from_file',
+    longitude            = -73.949,
+    latitude             = 40.818,
+    spinup_time          = 1800.0,
+    spinup_pt_mean       = 300.15,
+    spinup_pt_amplitude  = 8.0,
+    data_output_during_spinup = .F.,
+ /
+
+ &runtime_parameters
+    end_time              = 43200.0,
+    create_disturbances   = .T.,
+    dt_run_control        = 0.0,
+    dt_dots               = 300.0,
+    dt_dopr               = 3600.0,
+    averaging_interval_pr = 3600.0,
+    dt_averaging_input_pr = 0.0,
+    data_output_pr = '#u', '#v', '#theta', '#q', 'e',
+    dt_data_output     = 1800.0,
+    dt_data_output_av  = 3600.0,
+    averaging_interval = 3600.0,
+    section_xy         = 0, 10, 20,
+    data_output = 'u', 'v', 'w',
+                  'theta', 'theta_av',
+                  'q', 'q_av',
+                  'shf*_xy', 'shf*_xy_av',
+                  'tsurf*_xy', 'tsurf*_xy_av',
+                  'us*_xy',
+ /
+
+ &radiation_parameters
+    radiation_scheme   = 'rrtmg',
+    albedo_type        = 5,
+    constant_albedo    = .F.,
+    dt_radiation       = 60.0,
+    surface_reflections = .T.,
+ /
+
+ &land_surface_parameters
+    constant_roughness     = .T.,
+    vegetation_type        = 2,
+    soil_type              = 3,
+    conserve_water_content = .T.,
+    soil_temperature       = 300.0, 299.0, 298.0, 297.0, 296.0, 295.0, 294.0, 293.0,
+    soil_moisture          = 0.30, 0.30, 0.30, 0.30, 0.30, 0.30, 0.30, 0.30,
+    deep_soil_temperature  = 293.0,
+ /
+
+ &urban_surface_parameters
+    switch_off_module = .F.,
+ /
